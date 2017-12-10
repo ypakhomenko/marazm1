@@ -3,7 +3,6 @@
 # jip, 09.12.2017, falling into marasmus... :-)
 #
 # Independently of the used graphical toolkit, a line may be defined through its begining point, angle, length and color
-# Assume the length to be a constant 
 #
 
 import Point
@@ -11,9 +10,9 @@ import math
 
 class Line:
 
-   def __init__(self, p, ang, color = '#000000000'):
+   def __init__(self, p, ang, color = '#000000000', length=10):
 
-      self.length = 20
+      self.length = length
       self.p1 = p
       self.ang = ang
       self.color = color
