@@ -20,7 +20,9 @@ class Line:
 
    def calculate( self, p, ang): 
       
-      x = math.ceil( math.cos( math.radians( ang ))*self.length + self.p1.x )
-      y = math.ceil( math.sin( math.radians( ang ))*self.length + self.p1.y )
+      #x = math.ceil( math.cos( math.radians( ang ))*self.length + self.p1.x )
+      #y = math.ceil( math.sin( math.radians( ang ))*self.length + self.p1.y )
+      x = math.cos( math.radians( ang ))*self.length + self.p1.x
+      y = math.sin( math.radians( ang ))*self.length + self.p1.y
 
       return( Point.Point(x,y) )
