@@ -38,9 +38,8 @@ def start():
 
      h = int( canvas['height'] )
      w = int( canvas['width'] )
-     number = 10.0
-     between_w = w/number
-     between_h = h/number
+     number_w = 14.0
+     between_w = w/number_w
 
      r = 255
      g = 255
@@ -50,46 +49,44 @@ def start():
      y = 0
 
      sfss = []
-
+     distance = 75
+     LIM = 11
+     
      while True:
 
-         sfs = []
-         while x < w + 10:
-            direction = randint(-1, 1)
-            start_angle = randint(-7, 7)
-            l = randint(6, 9)
-            x_delta = randint(-4, 4)
-            y_delta = randint(-4, 4)
-            sfs.append( Snowflake( Point( x+x_delta,y_delta ), get_color( r, g, b ), l, start_angle ))
-            x += between_w
-	         
-         sfss.insert( 0, sfs )
-         for sf in sfss: 
-            # print( "Drawing line..." )
-            for s in sf: 
-               # print( "    Drawing a snowflake........" )
-               s.draw( canvas )
+         if distance%75 == 0:
+         #if distance <= 45:
+             sfs = []
+             while x < w + 10:
+                direction = randint(-1, 1)
+                start_angle = randint(-10, 10)
+                l = randint(6, 9)
+                x_delta = randint(-30, 30)
+                y_delta = randint(-15, 15)
+
+                s = Snowflake( Point( x+x_delta, y_delta ), get_color( r, g, b ), l, start_angle, direction )
+                s.draw( canvas )
+                sfs.append( s )
+                x += between_w
+
+             sfss.insert( 0, sfs )
+             # sfss.append( sfs )
+             x = 0
+         distance += 1
+         #l += l
 
          canvas.update()
-         time.sleep(4)
+         time.sleep(0.0001)
+
          for sf in sfss: 
             for s in sf: 
-               s.clean( canvas )
+               s.mv( canvas, 0, 1 )
+               # canvas.update()
 
-         canvas.update()
+         # print( "len(sfss): ", len(sfss) )
+         if( distance%1500) == 0: LIM -= 1
 
-         sfss[0][0].print()
-         for sf in sfss: 
-            for s in sf: 
-               s.centr_p.y += 50
-               s.calc()
-
-         sfss[0][0].print()
-
-         x = 0
-         if len(sfss) >= 25:
-             print( len(sfss) )
-             del sfss[ len(sfss)-1 ]
+         if len(sfss) >= LIM: del sfss[ len(sfss)-1 ]
 
 root.after(0, start)
 root.mainloop()

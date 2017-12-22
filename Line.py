@@ -16,13 +16,13 @@ class Line:
       self.p1 = p
       self.ang = ang
       self.color = color
-      self.p2 = self.calculate( p, ang)
+      self.p2 = self.calculate()
 
-   def calculate( self, p, ang): 
+   def calculate( self): 
       
       #x = math.ceil( math.cos( math.radians( ang ))*self.length + self.p1.x )
       #y = math.ceil( math.sin( math.radians( ang ))*self.length + self.p1.y )
-      x = math.cos( math.radians( ang ))*self.length + self.p1.x
-      y = math.sin( math.radians( ang ))*self.length + self.p1.y
+      x = math.cos( math.radians( self.ang ))*self.length + self.p1.x
+      y = math.sin( math.radians( self.ang ))*self.length + self.p1.y
 
       return( Point.Point(x,y) )
