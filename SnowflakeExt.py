@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #
-# jip, 10.12.2017, falling into marasmus... :-)
+# jip, 25.12.2017, falling into marasmus... :-)
 #
 #
 import Point
@@ -52,6 +52,7 @@ class Snowflake:
           for l in lines:
                id = canvas.create_line(l.p1.x, l.p1.y, l.p2.x, l.p2.y, fill=l.color, smooth=True, width=1)
                self.ids.append( id )
+               # print( len( self.ids ) )
 
    def mv( self, canvas, x, y ):
        

@@ -83,7 +83,7 @@ def start():
          distance += 1
 
          canvas.update()
-         time.sleep(0.0001)
+         time.sleep(0.02)
 
          for i in range( len( sfss ) ):
              for j in range( len( sfss[ i ] ) ):

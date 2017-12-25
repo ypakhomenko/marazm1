@@ -38,7 +38,7 @@ def start():
 
      h = int( canvas['height'] )
      w = int( canvas['width'] )
-     number_w = 8.0
+     number_w = 6.0
      between_w = w/number_w
 
      r = 255
@@ -49,41 +49,56 @@ def start():
      y = 0
 
      sfss = []
-     distance = 35
+     distance = 60
      step = distance
 
      xxxx = 0
      xdirection = 1    
-     shift = 120
-     kinds = [ 'round', 'symmetrical', 'asymmetrical', 'symmetrical', 'round' ]
+     shift = 10
+     kinds = [ 'round', 'symmetrical', 'asymmetrical' ]
+     kinds_nr = 0
  
      while True:
 
          
          xxxx += xdirection
-         if xxxx == 18 or xxxx == -40: xdirection *= (-1)
+         if xxxx == 18 or xxxx == -60: xdirection *= (-1)
          # if xxxx == -8 and step % 5 == 0: xdirection *= (-1) 
 
          if step % distance == 0:
-         # if True:
+
+             if kinds_nr < 3: 
+                index = 0
+                l = randint(30, 40)
+                step = distance
+             elif kinds_nr < 6: 
+                index = 1
+                l = randint(25, 35)
+                step = distance
+             else : 
+                index = 2
+                l = randint(20, 30)
+                step = distance
+
+             kinds_nr += 1
+             if kinds_nr == 10: kinds_nr = 0
+             k =  kinds[ index ]
+
              sfs = []
+
              while x < 2*w:
                 direction = randint(0, 1)
                 if direction == 0: direction = -1
                 if step%5 == 0: direction *= (-1)
 
                 start_angle = randint(-10, 10)
-                l = randint(30, 40)
                 x_delta = randint(-40, 40)
-                y_delta = randint(-60, 0)
+                y_delta = randint(-80, 0)
 
-                kinds_nr = randint( 0, len( kinds ) -1 )
-                k =  kinds[ kinds_nr ]
                 s = Snowflake( Point( x+x_delta, y_delta ), get_color( r, g, b ), l, start_angle, direction, k )
                 s.draw( canvas )
                 sfs.append( s )
                 x += between_w
-                kinds_nr += 1
 
              sfss.insert( 0, sfs )
              # sfss.append( sfs )
@@ -91,7 +106,7 @@ def start():
          step += 1
 
          canvas.update()
-         time.sleep(0.04)
+         time.sleep(0.02)
          # time.sleep(0.0001)
 
          for i in range( len( sfss ) ):
@@ -110,14 +125,16 @@ def start():
                sfss[ i ][ j ].calc()
                sfss[ i ][ j ].draw( canvas ) 
 
+         # print( " ***** len( sfss ) = ", len( sfss ) )
          for i in range( len( sfss ) ):
              j = 0
              length = len( sfss[ i ] )
+             # print( "len( sfss[ i ] ) = ", length )
              while( j < length ):
                  if sfss[ i ][ j ].centr_p.y > h - shift: 
-                      print( "sfss[ i ][ j ].centr_p.y = ", sfss[ i ][ j ].centr_p.y )
+                      # print( "sfss[ i ][ j ].centr_p.y = ", sfss[ i ][ j ].centr_p.y )
                       del sfss[ i ][ j ]
-                      shift += 0.5
+                      shift += 0.05
                       length = len( sfss[ i ] )
                       continue
                  j += 1
