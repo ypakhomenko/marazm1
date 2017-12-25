@@ -29,8 +29,8 @@ root = tkinter.Tk()
 root.title("... marasmus was getting stronger ...")
 
 Button(root, text="ой фсё...", command=quit).pack( side = BOTTOM )
-W=1500
-H=1000
+W=1200
+H=800
 canvas = tkinter.Canvas(root, width=W, height=H, background='black')
 canvas.pack()
 
@@ -38,7 +38,7 @@ def start():
 
      h = int( canvas['height'] )
      w = int( canvas['width'] )
-     number_w = 6.0
+     number_w = 6
      between_w = w/number_w
 
      r = 255
@@ -49,12 +49,12 @@ def start():
      y = 0
 
      sfss = []
-     distance = 60
+     distance = 45
      step = distance
 
      xxxx = 0
      xdirection = 1    
-     shift = 10
+     shift = 0
      kinds = [ 'round', 'symmetrical', 'asymmetrical' ]
      kinds_nr = 0
  
@@ -62,34 +62,33 @@ def start():
 
          
          xxxx += xdirection
-         if xxxx == 18 or xxxx == -60: xdirection *= (-1)
-         # if xxxx == -8 and step % 5 == 0: xdirection *= (-1) 
+         if xxxx == 18 or xxxx == -80: xdirection *= (-1)
+         if xxxx == -8 and step % 5 == 0: xdirection *= (-1) 
 
          if step % distance == 0:
 
              if kinds_nr < 3: 
+                factor = 1.5
                 index = 0
-                l = randint(30, 40)
-                step = distance
              elif kinds_nr < 6: 
                 index = 1
-                l = randint(25, 35)
-                step = distance
+                factor = 1
              else : 
                 index = 2
-                l = randint(20, 30)
-                step = distance
+                factor = 0.75
 
              kinds_nr += 1
-             if kinds_nr == 10: kinds_nr = 0
+             if kinds_nr == 9: kinds_nr = 0
              k =  kinds[ index ]
 
              sfs = []
 
-             while x < 2*w:
+             while x < w + 80:
                 direction = randint(0, 1)
                 if direction == 0: direction = -1
                 if step%5 == 0: direction *= (-1)
+
+                l = randint(20, 30) * factor
 
                 start_angle = randint(-10, 10)
                 x_delta = randint(-40, 40)
@@ -105,8 +104,8 @@ def start():
              x = 0
          step += 1
 
-         canvas.update()
          time.sleep(0.02)
+         canvas.update()
          # time.sleep(0.0001)
 
          for i in range( len( sfss ) ):
