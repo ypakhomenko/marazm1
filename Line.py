@@ -18,7 +18,7 @@ class Line:
       self.color = color
       self.p2 = self.calculate()
 
-   def calculate( self): 
+   def calculate( self ): 
       
       #x = math.ceil( math.cos( math.radians( ang ))*self.length + self.p1.x )
       #y = math.ceil( math.sin( math.radians( ang ))*self.length + self.p1.y )

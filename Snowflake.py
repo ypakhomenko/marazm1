@@ -45,7 +45,7 @@ class Snowflake:
       # print( "len( self.lines ): ", len( self.lines ) )
 
       for l in self.lines:
-          id = canvas.create_line(l.p1.x, l.p1.y, l.p2.x, l.p2.y, fill=l.color, smooth=True, width=2)
+          id = canvas.create_line(l.p1.x, l.p1.y, l.p2.x, l.p2.y, fill=l.color, smooth=True, width=1)
           self.ids.append( id )
 
    def mv( self, canvas, x, y ):
