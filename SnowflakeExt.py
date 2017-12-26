@@ -10,7 +10,7 @@ from Petal import Petal
 
 class Snowflake:
 
-   def __init__(self, center_p, color = '#000000000', base_length=10, angl=0, direction=1, form='round'): 
+   def __init__(self, center_p, color = '#000000000', base_length=10, angl=0, direction=1, form='round', width=1): 
 
       self.l = base_length
       self.centr_p = center_p
@@ -21,6 +21,7 @@ class Snowflake:
       self.direction = direction
       self.calculate( center_p, color, base_length, angl, form )
       self.form = form
+      self.width = width
 
 
    def calc( self ): self.calculate( self.centr_p, self.color, self.l, self.angl, self.form )
@@ -50,7 +51,7 @@ class Snowflake:
       for pet in self.petals:
           lines = pet.get_lines()
           for l in lines:
-               id = canvas.create_line(l.p1.x, l.p1.y, l.p2.x, l.p2.y, fill=l.color, smooth=True, width=1)
+               id = canvas.create_line(l.p1.x, l.p1.y, l.p2.x, l.p2.y, fill=l.color, smooth=True, width=self.width)
                self.ids.append( id )
                # print( len( self.ids ) )
 

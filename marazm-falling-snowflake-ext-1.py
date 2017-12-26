@@ -84,6 +84,7 @@ def start():
              sfs = []
 
              while x < w + 80:
+                lw = randint(0, 5)
                 direction = randint(0, 1)
                 if direction == 0: direction = -1
                 if step%5 == 0: direction *= (-1)
@@ -94,7 +95,7 @@ def start():
                 x_delta = randint(-40, 40)
                 y_delta = randint(-80, 0)
 
-                s = Snowflake( Point( x+x_delta, y_delta ), get_color( r, g, b ), l, start_angle, direction, k )
+                s = Snowflake( Point( x+x_delta, y_delta ), get_color( r, g, b ), l, start_angle, direction, k, lw )
                 s.draw( canvas )
                 sfs.append( s )
                 x += between_w
@@ -104,7 +105,7 @@ def start():
              x = 0
          step += 1
 
-         time.sleep(0.02)
+         time.sleep(0.04)
          canvas.update()
          # time.sleep(0.0001)
 
@@ -133,7 +134,7 @@ def start():
                  if sfss[ i ][ j ].centr_p.y > h - shift: 
                       # print( "sfss[ i ][ j ].centr_p.y = ", sfss[ i ][ j ].centr_p.y )
                       del sfss[ i ][ j ]
-                      shift += 0.05
+                      shift += 0.5
                       length = len( sfss[ i ] )
                       continue
                  j += 1
