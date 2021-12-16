@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 #
 # jip, 09.12.2017, falling into marasmus... :-)
-# Ham ek bariwar hai
+# Ham ek pariwar hai
+# pariwar chota nahi hai
 
 from Point import Point
 import Line
