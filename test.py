@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 #
 # jip, 09.12.2017, falling into marasmus... :-)
+# Ham ek bariwar hai
 
 from Point import Point
 import Line
