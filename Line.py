@@ -5,6 +5,8 @@
 # Independently of the used graphical toolkit, a line may be defined through its begining point, angle, length and color
 #
 
+# pull test
+#
 import Point
 import math
 
